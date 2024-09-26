@@ -216,7 +216,7 @@ def filtrar_baixa_quantaide(limite_minimo=5):
     print(f'Descrição: {atributo[0]}, Código: {atributo[1]}, Quantidade: {atributo[2]}, Custo do item: {atributo[3]}, Preço de venda: {atributo[4]}')
 
 #Validação de atualização
-def validar_atualizacao(atributos, nova_quantidade=None, novo_preco=None):
+def validar_atualizacao(atributos, nova_quantidade=0, novo_preco=0.0):
     """
     Valida se a nova quantidade e preço são válidos.
 
@@ -228,19 +228,17 @@ def validar_atualizacao(atributos, nova_quantidade=None, novo_preco=None):
     quantidade_atual = int(atributos[2])  # Atributo de quantidade atual
     custo_atual = float(atributos[3])      # Atributo de custo atual
 
-    if nova_quantidade is not None:
-        # Verifica se a nova quantidade não deixa o estoque negativo
-        if quantidade_atual + nova_quantidade < 0:
-            print("Erro: A nova quantidade não pode deixar o estoque negativo.")
-            return False
+    # Verifica se a nova quantidade não deixa o estoque negativo
+    if quantidade_atual + nova_quantidade < 0:
+        print("Erro: A nova quantidade não pode deixar o estoque negativo.")
+        return True
 
-    if novo_preco is not None:
-        # Verifica se o novo preço de venda não é menor que o custo do item
-        if novo_preco < custo_atual:
-            print("Erro: O preço de venda não pode ser menor que o custo do item.")
-            return False
+    # Verifica se o novo preço de venda não é menor que o custo do item
+    if novo_preco < custo_atual:
+        print("Erro: O preço de venda não pode ser menor que o custo do item.")
+        return True
 
-    return True
+    return False
 
 #Atualização do estoque | Também permite alterar o preço de venda de um produto
 def atualizar_estoque():
@@ -275,7 +273,7 @@ def atualizar_estoque():
             atributos[1] = novo_codigo
         case 'q':
             nova_quantidade = int(input('Digite a nova quantidade: '))
-            if not validar_atualizacao(atributos, nova_quantidade=nova_quantidade):
+            if validar_atualizacao(atributos, nova_quantidade):
                 return
             atributos[2] = str(int(atributos[2]) + nova_quantidade) 
         case 'ci':
@@ -290,8 +288,7 @@ def atualizar_estoque():
             novo_preco = input('Digite o novo preço de venda: ')
             try:
                 novo_preco_float = float(novo_preco)
-                # Validação do preço
-                if not validar_atualizacao(atributos, novo_preco=novo_preco_float):
+                if validar_atualizacao(atributos, novo_preco_float):
                     return
                 atributos[4] = novo_preco_float
             except ValueError:
