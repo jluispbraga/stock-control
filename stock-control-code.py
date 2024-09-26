@@ -242,7 +242,7 @@ def validar_atualizacao(atributos, nova_quantidade=None, novo_preco=None):
 
     return True
 
-# Atualização do estoque | Também permite alterar o preço de venda de um produto
+#Atualização do estoque | Também permite alterar o preço de venda de um produto
 def atualizar_estoque():
     '''
       Função que atualiza as informações de um produto no estoque.
@@ -305,7 +305,7 @@ def atualizar_estoque():
     lista_produtos[lista_produtos.index(produto_encontrado[0])] = atributos
 
     # Atualiza o estoque inicial
-    estoque_inicial = '#'.join([';'.join(produto) for produto in lista_produtos])
+    estoque_inicial = '#'.join([';'.join(str(item) for item in produto) for produto in lista_produtos])
 
     print("Estoque atualizado com sucesso.")
 
