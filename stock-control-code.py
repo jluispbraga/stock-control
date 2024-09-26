@@ -13,7 +13,7 @@ def introducao():
       7 - Filtrar produtos de baixa qualidade
       8 - Atualizar produto
       9 - Calcular o valor total do estoque
-      10 - Calcular o lucro total do estoque
+      10 - Calcular o lucro presumido do estoque
       11 - Gerar relatório geral do estoque
   ''')
 
@@ -347,7 +347,7 @@ def calcular_lucro_presumido(produtos):
       :return: Lucro total presumido do estoque.
     '''
     lucro_total = sum((produto['preco_venda'] - produto['custo']) * produto['quantidade'] for produto in produtos)
-    print('Lucro total do estoque: ', lucro_total)
+    print('Lucro presumido do estoque: ', lucro_total)
 
 # Função para gerar um relatório geral do estoque | Feito codigo base, usando GPT para otimizar o codigo
 def gerar_relatorio_estoque(produtos):
