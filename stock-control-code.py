@@ -1,3 +1,5 @@
+estoque_inicial = "Notebook Dell;201;15;3200.00;4500.00#Notebook Lenovo;202;10;2800.00;4200.00#Mouse Logitech;203;50;70.00;150.00#Mouse Razer;204;40;120.00;250.00#Monitor Samsung;205;0;800.00;1200.00#Monitor LG;206;0;750.00;1150.00#Teclado Mecânico Corsair;207;30;180.00;300.00#Teclado Mecânico Razer;208;25;200.00;350.00#Impressora HP;209;5;400.00;650.00#Impressora Epson;210;3;450.00;700.00#Monitor Dell;211;12;850.00;1250.00#Monitor AOC;212;7;700.00;1100.00"
+
 #Ao iniciar a sessão
 def introducao():
   '''
@@ -376,13 +378,13 @@ def gerar_relatorio_estoque(produtos):
     print(f"Faturamento Total: {faturamento_total:.2f}".rjust(70))
 
 
-estoque_inicial = "Notebook Dell;201;15;3200.00;4500.00#Notebook Lenovo;202;10;2800.00;4200.00#Mouse Logitech;203;50;70.00;150.00#Mouse Razer;204;40;120.00;250.00#Monitor Samsung;205;0;800.00;1200.00#Monitor LG;206;0;750.00;1150.00#Teclado Mecânico Corsair;207;30;180.00;300.00#Teclado Mecânico Razer;208;25;200.00;350.00#Impressora HP;209;5;400.00;650.00#Impressora Epson;210;3;450.00;700.00#Monitor Dell;211;12;850.00;1250.00#Monitor AOC;212;7;700.00;1100.00"
-produtos = processar_estoque()
 
 #Introdução
 def main():
   print('Olá bem-vindo! O que você deseja fazer?')
   introducao()
+
+  produtos = processar_estoque()
   while(True):
     
     opcao = int(input('Digite o numero da ação desejada: '))
@@ -417,5 +419,4 @@ def main():
     else:
       introducao()
 
-if __name__ == "__main__":
-    main()
+main()
