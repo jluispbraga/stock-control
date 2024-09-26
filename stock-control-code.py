@@ -10,7 +10,7 @@ def introducao():
       4 - Buscar produto
       5 - Remover produto
       6 - Consultar produtos esgotados
-      7 - Filtrar produtos de baixa qualidade
+      7 - Filtrar produtos de baixa quantidade
       8 - Atualizar produto
       9 - Calcular o valor total do estoque
       10 - Calcular o lucro presumido do estoque
